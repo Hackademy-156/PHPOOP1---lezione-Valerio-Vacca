@@ -8,7 +8,7 @@
 // - TEACHER
     // nome, cognome, età, stipendio   
 
-class Person{
+abstract class Person{
 
     // attributi
     protected $nome;
@@ -31,28 +31,77 @@ class Person{
     }
 
     // metodi
-    public function sayHello(){
-        echo "Ciao, sono $this->nome $this->cognome ed ho $this->eta anni \n";    
-    }
-
-    // metodo per visualizzare un dato -> funzione Getter
-    public function print_name(){
-        echo "$this->nome \n";
-    }
-
-    // metodo per cambiare un dato -> funzione Setter
-    public function edit_name($nuovo_nome){
-        $this->nome = $nuovo_nome;
-    }
-
+    public abstract function sayHello();
 
 }
 
-$giuseppe = new Person("Giuseppe", "Fanizzi", 28);
 
-$giuseppe -> print_name();
-$giuseppe -> edit_name('Walter');
-$giuseppe -> print_name();
+// COME SI CREA UN TRAIT??
+// il trait ha dei metodi
+trait Jetpack{
+    public function volo(){
+        echo "Guarda mammaaaa sto volando! E non è l'erba gatta.";
+    }
+}
+
+
+class Teacher extends Person{
+    // vado a dichiarare un trait
+    // come faccio? con la keyword use
+    use Jetpack;
+
+    // attributi
+    public $stipendio;
+
+    // costruttore
+    public function __construct($name, $surname, $age, $money){
+        parent::__construct($name, $surname, $age);
+
+        $this-> stipendio = $money;
+        
+    }
+
+    // metodi
+    public function sayHello(){
+        echo "Salve salvino corsista vicino, mi chiamo $this->nome, $this->cognome, ho $this->eta anni e il mio stipendio è di $this->stipendio euri. \n";
+    }
+
+}
+
+$nicolaMenonna = new Teacher('Nicola', 'Menonna', 62, '20 mila');
+// $nicolaMenonna -> sayHello();
+
+$nicolaMenonna -> volo();
+
+
+class Student extends Person{
+
+    // ATTRIBUTI
+    public $materia;
+
+    // FUNZIONE COSTRUTTORE
+    public function __construct($name, $surname, $age, $subject){
+        parent::__construct($name, $surname, $age);
+        
+        $this->materia = $subject;
+    }
+
+    // METODI
+    public function sayHello(){
+        echo "Ciao a tutti, sono $this->nome $this->cognome, ho $this->eta anni e adoro un sacco, ma proprio tanto studiare $this->materia";
+    }
+
+}
+
+$alessandro = new Student('Alessandro', 'Patruno', 23, 'Biologia');
+// $alessandro -> volo();
+// $alessandro -> sayHello();
+
+// $giuseppe = new Person("Giuseppe", "Fanizzi", 28);
+
+// $giuseppe -> print_name();
+// $giuseppe -> edit_name('Walter');
+// $giuseppe -> print_name();
 
 // $giuseppe -> nome  = "Arianna";
 
@@ -72,3 +121,14 @@ $giuseppe -> print_name();
             //   L’attributo viene ereditato dalle classi figlie.
 //  - PRIVATE -> Lo stesso comportamento di protected.
     // L’attributo non viene ereditato da eventuali classi figlie.
+
+
+
+    // creo la classe procione
+
+    class Raccoon{
+        use Jetpack;
+    }
+
+    $rocket = new Raccoon();
+    $rocket -> volo();

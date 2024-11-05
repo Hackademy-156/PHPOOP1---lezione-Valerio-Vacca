@@ -2,33 +2,33 @@
 // - TEACHER
 // nome, cognome, età, stipendio 
 
-include "Person.php";
+// include "Person.php";
 
-class Teacher extends Person{
+// class Teacher extends Person{
 
     // attributi
-    public $stipendio;
+    // public $stipendio;
 
     // costruttore
-    public function __construct($name, $surname, $age, $money){
+    // public function __construct($name, $surname, $age, $money){
 
-        parent::__construct($name, $surname, $age);
+    //     parent::__construct($name, $surname, $age);
 
-        $this-> stipendio = $money;
+    //     $this-> stipendio = $money;
 
-    }
+    // }
 
     //metodi
 
-    public function teacher_sayHello(){
+//     public function teacher_sayHello(){
 
-        echo "Salve, sono il docente $this->nome $this->cognome, ho $this->eta anni e guadagno circa sedicenti $this->stipendio euri in gettoni d'oro";
+//         echo "Salve, sono il docente $this->nome $this->cognome, ho $this->eta anni e guadagno circa sedicenti $this->stipendio euri in gettoni d'oro";
 
-    }
+//     }
 
-}
+// }
 
-$valerio = new Teacher('Valerio', 'Vacca', 33, 150,000);
+// $valerio = new Teacher('Valerio', 'Vacca', 33, 150,000);
 
-$valerio -> teacher_sayHello();
-$valerio -> sayHello();
+// $valerio -> teacher_sayHello();
+// $valerio -> sayHello();
